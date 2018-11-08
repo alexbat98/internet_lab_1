@@ -2,40 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Canvas Drawer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pickr-widget/dist/pickr.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pickr-widget/dist/pickr.min.js"></script>
     <script src="js/drawer.js"></script>
+
+    <title>Canvas Drawer</title>
 
     <style>
         #drawing_surface {
+            /*display: table-cell;*/
+            background-color: white;
+            margin: 10px auto auto;
+            width: 800px;
+            height: 700px;
             display: block;
         }
 
         #toolbar {
-            /*background: black;*/
             height: 72px;
             width: 100%;
+            display: block;
         }
 
         #stroke_control_wrapper {
-            width: 175px;
+            width: 295px;
+            float: left;
+        }
+
+        .canvas-background {
+            width: 100%;
+            height: 100%;
+            /*display: table;*/
+        }
+
+        .btn {
+            /*margin-left: 313px;*/
+            margin-top: 16px;
+        }
+
+        .color-picker, .pickr {
+            position: absolute;
+            left: 300px;
+            top: 72px;
+        }
+
+        .pcr-button {
+            visibility: hidden;
         }
     </style>
 </head>
-<body>
 
-<div id="toolbar" class="mdl-layout__header mdl-layout__header--transparent">
-    <div id="stroke_control_wrapper">
-        <input id="stroke_control" class="mdl-slider mdl-js-slider" type="range"
-           min="10" max="50" value="10" tabindex="0">
+<body class="mdl-layout">
+
+<div id="toolbar" class="mdl-header mdl-shadow--16dp">
+    <div id="stroke_control_wrapper" style="margin-top: 24px">
+        <input id="stroke_control"  class="mdl-slider mdl-js-slider" type="range"
+                              min="10" max="50" value="10" tabindex="0">
     </div>
+
+    <button id="color" class="btn mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">color_lens</i>
+    </button>
+
+    <button id="freehand" class="btn mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">edit</i>
+    </button>
+
+    <button id="line" class="btn mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">dehaze</i>
+    </button>
+
+    <button id="square" class="btn mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">crop_square</i>
+    </button>
+    <button id="circle" class="btn mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">panorama_fish_eye</i>
+    </button>
+
+
 </div>
 
-<canvas id="drawing_surface" width="300" height="800">
 
-</canvas>
+
+<div class="canvas-background mdl-color--grey-200">
+    <canvas id="drawing_surface"  width="800px" height="700px"></canvas>
+</div>
+
+<div class="color-picker"></div>
 
 </body>
 </html>
