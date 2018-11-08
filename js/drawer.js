@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", event => {
     window.addEventListener('resize', resizeCanvas, false);
 
     function resizeCanvas() {
+        surface.height = 700;
+        surface.width = 800;
         horizontalOffset = (window.innerWidth - 800) / 2;
     }
     resizeCanvas();
